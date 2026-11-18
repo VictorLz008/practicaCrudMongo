@@ -9,13 +9,16 @@
 </div>
 <div class="mb-3">
     <label class="form-label">Cantidad</label>
-    <input type="number" name="cantidad" class="form-control"
-           value="{{ old('cantidad', $producto->cantidad ?? 0) }}">
+    <input type="number" name="stock" class="form-control"
+           value="{{ old('stock', $producto->stock ?? 0) }}">
 </div>
 <div class="mb-3">
     <label class="form-label">Precio</label>
     <input type="number" step="0.01" name="precio" class="form-control"
            value="{{ old('precio', $producto->precio ?? 0) }}">
 </div>
-<button class="btn btn-success">Guardar</button>
-<a href="{{ route('productos.index') }}" class="btn btn-secondary">Cancelar</a>
+
+<div class="content d-flex justify-content-end">
+<button class="btn btn-success theme-primary btn-solid btn-styled">Guardar</button>
+<a href="{{ route('productos.index') }}" class="btn btn-secondary theme-danger btn-solid btn-styled">Cancelar</a>
+</div>

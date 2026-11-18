@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Nuevo producto</h3>
-<form action="{{ route('productos.store') }}" method="POST">
+<div class="container">
+    <h3 class="text-center mb-4">Nuevo Producto</h3>
+<form action="{{ route('productos.store') }}" method="POST" class="mx-auto" style="max-width: 400px;">
     @csrf
     @include('productos._form')
 </form>
+</div>
 @endsection

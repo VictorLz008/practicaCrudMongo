@@ -24,7 +24,7 @@ class ProductoController extends Controller
             'nombre'      => 'required|string|max:255',
             'descripcion' => 'nullable|string',
             'precio'      => 'required|numeric|min:0',
-            'cantidad'       => 'required|integer|min:0',
+            'stock'       => 'required|integer|min:0',
         ]);
 
         Producto::create($datos);

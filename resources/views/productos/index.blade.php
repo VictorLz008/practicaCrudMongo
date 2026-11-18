@@ -3,30 +3,31 @@
 @section('title', 'Inventario')
 
 @section('content')
-    <h1>Inventario</h1>
+<div class="container d-flex justify-content-center"> 
 
-    <table border="1" cellpadding="6">
+    <table class="table table-sm table-striped table-bordered border-primary table-responsive  w-70">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Acciones</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
             @forelse ($productos as $p)
                 <tr>
-                    <td>{{ $p->nombre }}</td>
+                    <td scope="row" >{{ $p->nombre }}</td>
                     <td>{{ $p->precio }}</td>
                     <td>{{ $p->stock }}</td>
-                    <td>
-                        <a href="{{ route('productos.show', $p->id) }}">Ver</a>
-                        <a href="{{ route('productos.edit', $p->id) }}">Editar</a>
-                        <form action="{{ route('productos.destroy', $p->id) }}" method="POST" style="display:inline">
+                    <td>{{ $p->descripcion }}</td>
+                    <td class="w-11">
+                        <a href="{{ route('productos.edit', $p->id) }}" class="btn btn-primary theme-primary btn-solid btn-styled">Editar</a>
+                        <form action="{{ route('productos.destroy', $p->id) }}"  method="POST" style="display:inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('¿Eliminar este producto?')">Eliminar</button>
+                            <button type="submit" class="btn theme-danger btn-solid btn-styled" onclick="return confirm('¿Eliminar este producto?')">Eliminar</button>
                         </form>
                     </td>
                 </tr>
