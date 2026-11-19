@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Producto;
-use Illuminate\Http\Request;
+
 use App\Http\Requests\ProductoRequest;
 use App\Services\ProductoService;
+use Illuminate\Support\Facades\Gate;
+use App\Models\Producto;
 
 class ProductoController extends Controller
 {
@@ -19,6 +20,9 @@ class ProductoController extends Controller
 
     public function create()
     {
+        if (Gate::denies('create', Producto::class)) {
+            return back()->with('error', 'Solo los administradores pueden agregar productos.');
+        }
         return view('productos.create');
     }
 
@@ -47,9 +51,13 @@ class ProductoController extends Controller
         return redirect()->route('productos.index');
     }
 
-    public function destroy(string $id)
-    {
-        $this->productos->eliminar($id);
-        return redirect()->route('productos.index');
+public function destroy(string $id)
+{
+    if (Gate::denies('delete', Producto::class)) {
+        return back()->with('error', 'Solo los administradores pueden eliminar productos.');
     }
+    $this->productos->eliminar($id);
+
+    return redirect()->route('productos.index');
+}
 }
