@@ -17,7 +17,7 @@
 </nav>
 
     <hr>
-
+     <x-alertas />
     <main>
         @yield('content')     
     </main>

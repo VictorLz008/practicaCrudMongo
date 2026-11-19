@@ -3,6 +3,8 @@
 @section('title', 'Inventario')
 
 @section('content')
+
+
 <div class="container d-flex justify-content-center"> 
 
     <table class="table table-sm table-striped table-bordered border-primary table-responsive  w-70">
